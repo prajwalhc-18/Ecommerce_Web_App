@@ -1,0 +1,59 @@
+{% include "html/master.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+{% load static %}
+{% for item in cart_items %} 
+<div class="row">
+    <div class="col-sm-2">
+      <div class="card">
+        <div class="card-body">
+          <img src="/static/media/{{item.product_name.image}}" alt={{item.product_name.name}} style="height:100px">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <!-- Inside your cart.html -->
+          <h4>{{item.product_name.name}}</h4>
+          <p>Price:Rs{{item.product_name.price}}</p>
+          <p>Quantity:<form method="post" action="{% url 'increment_cart' item.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">+<button>
+          </form>
+            {{ item.quantity }}
+            <form method="post" action="{% url 'decrement_cart' item.id %}" style="display:inline;"
+            >
+            {% csrf_token %}
+            <button type="submit">-</button>
+        </form>
+    </p>
+    <form method="post" action="{% url 'remove_from_cart' item.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger"> Remove from Cart</button>
+    </form>
+    <p> Total:RS{{item.totalprice}}</p>
+
+
+        </div>
+    </div>
+</div>
+</div>
+{% endfor %}
+
+<div class="order-summary">
+    <p>Total Order Price:Rs{{total_price}}</p>
+</div>
+
+<div class="checkout-button">
+    <form method="post" action={% url 'checkout'%}> 
+        {% csrf_token %} 
+        <button type="submit" class="btn btn-success">
+            proceed to Checkout</button>
+        </div>
+
+
+
+
+
+{% endblock %}

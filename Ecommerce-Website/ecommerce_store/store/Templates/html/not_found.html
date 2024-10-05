@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <title>{% block title %}{% endblock %}</title>
+  </head>
+
+  <body>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="/dashboard">FlipKart</a>
+              </div>
+              <ul class="nav navbar-nav">
+                  <li class="active"><a href="/dashboard">Home</a></li>
+                  <li><a href="#">Account</a></li>
+                  <li><a href="#">About US</a></li>
+              </ul>
+
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <form action={% url 'search_results' %} method="get">
+                          <div class="input-group rounded" style="width: 150px; height: 30px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);margin-top:10px;">
+                              <input name="q" type="text" class="form-control rounded-sm" placeholder="Search" aria-label="Search" aria-describedby="search-addon" style="height: 100%; border-radius:5px" />
+
+                          </div>
+                      </form>
+                  </li>
+                  <li><a href="/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                  <li><a href="/cart"><span class="label label-danger">Cart</span></a></li>
+              </ul>
+          </div>
+      </nav>
+      {% block content %} {% endblock %}
+  </body>
+
+  </html>

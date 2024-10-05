@@ -1,0 +1,55 @@
+<!-- checkout.html -->
+<h2>Checkout</h2>
+
+
+
+<!-- Display order summary here -->
+{% comment %}
+<form method='POST'>
+    {% csrf_token %} {{form}}
+    <input type='submit'>
+</form> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap CSS link (either from CDN or local file) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-image: url('https://www.theindianwire.com/wp-content/uploads/2018/06/flipkart-image.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
+    .form-container {
+        border: 1px solid #ccc;
+        padding: 40px;
+        border-radius: 10px;
+        background-color: rgb(199, 199, 199);
+    }
+</style>
+<title> Checkout form </title>
+
+
+<body>
+    <div class="container mt-5">
+        <div class="col-md-6 offset-md-3 form-container">
+            <h1 class="mb-4 text-primary fw-bold display-2"></h1>
+            <form method="post" action="{% url 'checkout' %}">
+                {% csrf_token %}
+                {{ shipping_address_form.as_p }}
+                <button type="submit" class="btn btn-success">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

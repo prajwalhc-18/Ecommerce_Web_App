@@ -1,0 +1,77 @@
+
+{% extends "html/master.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> {% load static %}
+    <style>
+        .a +{
+            border-style: outset;
+        }
+        
+        .a:hover {
+            color: aliceblue;
+        }
+        
+        .af {
+            background: black;
+        }
+        
+        body {
+            background: black
+        }
+        
+        .thumbnail:hover {
+            background: rgb(122, 100, 100);
+            color: white
+        }
+        
+        .name:hover {
+            color: antiquewhite
+        }
+        .aa {
+            text-align:center
+        }
+    </style>
+
+
+
+
+<body>
+    
+    
+
+    <img src="https://static.vecteezy.com/system/resources/previews/000/676/564/original/offer-sale-abstract-background-with-bold.jpg" alt="Lights" class="img-rounded" style="width:100%;height:400px">
+    <br><br>
+    <div>
+        {% for i in object_list %}
+        <div class="col-md-2 af">
+            <div class="thumbnail ">
+                <a href="{% url 'product_details' i.id %}">
+                    <div class="a">
+                        <img src="static/media/{{ i.image }}" alt="Lights" class="img-rounded" style="width:100%;height:200px;">
+                    </div>
+                    <div class="container-fluid" style="margin-top:10px;margin-bottom :10px;">
+
+                        <ul class="nav navbar-nav">
+                            <li class="name" style="color:black;font-weight:600">{{ i.name }}</li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+
+
+                            <li class="name" style="color:black;font-weight:600">RS{{i.price}}</li>
+                        </ul>
+                    </div>
+                </a>
+                <div class="aa">
+                <a href="/checkout" class="btn btn-danger" widht="200px">BUY<a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>

@@ -1,0 +1,55 @@
+{% include "html/master.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<body style="background:darkgray">
+{% load static %}
+
+<div class="card text-center" style="background-color:darkgray">
+        <h1 style="background-color:black;color:azure">Product Name : {{i.name}} </h1>
+        <div class="row">s   
+            <div class="col-sm-6">  
+                <div class="card-header">
+        <img src="static/media/{{i.image}}" alt="" height="400px" width="400px"> 
+    </div>
+</div>
+    <div class="col-sm-6">
+        <b><div>
+            <br>
+            <h2 class="card-text">Name : {{i.name}}</h2>
+            <h2 class="card-text">Price : ₹ {{i.price}}</h2>
+            
+            <h2>Rating :  {{i.rating}} ⭐ </h2>
+            <h2>Seller name : {{i.seller_name}}</h2>
+
+            <h3>About Product </h3>{{i.description}}</h3>
+    </div><b>
+</div>
+
+</div>
+<div>
+    <form method="post" action="{% url 'add_to_cart' %}">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value={{i.id}}>
+        <button type="submit" class="add-to-cart btn btn-primary">Add to Cart</button>
+        
+    </form>	
+    <br><br>
+    <a href='/checkout' class="add-to-cart btn btn-danger">BUY<a>
+</div>
+
+<div style="background:black;color:white;text-align: center;">
+    <br><br>
+    <h2> Get to know us </h2>
+    <h4> About US
+        <h4>
+            <h4> Careers</h4>
+            <h4> press Releases</h>
+                <h4> Amazon Science</h4>
+                <br><br>
+</div>
+
+
+
+</body>{% endblock %}
+
+

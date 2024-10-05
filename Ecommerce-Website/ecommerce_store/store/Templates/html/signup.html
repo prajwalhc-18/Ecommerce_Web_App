@@ -1,0 +1,74 @@
+{% comment %}
+<form method='POST'>
+    {% csrf_token %} {{form}}
+    <input type='submit'>
+</form> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap CSS link (either from CDN or local file) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-image: url('https://www.theindianwire.com/wp-content/uploads/2018/06/flipkart-image.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
+    .form-container {
+        border: 1px solid #ccc;
+        padding: 40px;
+        border-radius: 10px;
+        background-color: rgb(199, 199, 199);
+    }
+</style>
+<title> Flipkart Signup</title>
+
+
+<body>
+    <div class="container mt-5">
+        <div class="col-md-6 offset-md-3 form-container">
+            <h1 class="mb-4 text-primary fw-bold display-2">Flipkart Sign Up</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3 text-end">
+                    <!-- Aligns label and input field to the right -->
+                    {{ form.username.label_tag }} {{ form.username }}
+                </div>
+                <div class="mb-3 text-end">
+                    <!-- Aligns label and input field to the right -->
+                    {{ form.first_name.label_tag }} {{ form.first_name }}
+                </div>
+                <div class="mb-3 text-end">
+                    <!-- Aligns label and input field to the right -->
+                    {{ form.last_name.label_tag }} {{ form.last_name }}
+                </div>
+                <div class="mb-3 text-end">
+                    <!-- Aligns label and input field to the right -->
+                    {{ form.email.label_tag }} {{ form.email }}
+                </div>
+                <div class="mb-3 text-end">
+                    <!-- Aligns label and input field to the right -->
+                    {{ form.password1.label_tag }} {{ form.password1 }}
+                </div>
+                <div class="mb-3 text-end">
+                    <!-- Aligns label and input field to the right -->
+                    {{ form.password2.label_tag }} {{ form.password2 }}
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <br><br>
+                <a href="/login" class="btn btn-primary">LOGIN<a>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
